@@ -1,5 +1,2 @@
-Checks: '-*,modernize-loop-convert'
-CheckOptions:
-  - key:             modernize-loop-convert.MinConfidence
-    value:           reasonable
+Checks: '-*,modernize-pass-by-value'
 
