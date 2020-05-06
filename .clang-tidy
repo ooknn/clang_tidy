@@ -1,5 +1,5 @@
-Checks: '-*,-header-filter="^include" ,readability-identifier-naming '
+Checks: '-*,modernize-loop-convert'
 CheckOptions:
-  - key:             readability-identifier-naming.ClassCase
-    value:           lower_case 
+  - key:             modernize-loop-convert.MinConfidence
+    value:           reasonable
 
