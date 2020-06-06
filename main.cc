@@ -1,25 +1,46 @@
 #include <memory>
 #include <string>
 #include <utility>
+int gnum = 10;
+namespace OoknnEnum {
+enum HelloWorld {
+  khello,
+  kworld,
+};
+}  // namespace OoknnEnum
 
-class PipeLine {
- public:
-  PipeLine(std::string  cmds) : cmd_lines_(std::move(cmds)) {}
-  ~PipeLine() = default;
+struct Entity {
+ private:
+  [[nodiscard]] std::string GetName() const { return Name_; }
 
  private:
-  std::string cmd_lines_;
+  std::string Name_;
+  static const int kId = 0;
+};
+
+class CPipeLine {
+ public:
+  explicit CPipeLine(std::string cmds, std::string line = "")
+      : CmdLines_(std::move(cmds)) {}
+  ~CPipeLine() = default;
+
+ private:
+  [[nodiscard]] std::string Cmd(std::string line = "") const { return CmdLines_; }
+
+ private:
+  int*p_ = nullptr;
+  std::string CmdLines_;
 };
 
 template <typename... Types>
-void maybe_unused(Types...) {}
+void MaybeUnused(Types...) {}
 
-void test_make_shared() {
-  auto cmd_lines = std::make_shared<PipeLine>("ls");
-  maybe_unused(cmd_lines);
+void TestMakeShared() {
+  auto cmd_lines = std::make_shared<CPipeLine>("ls");
+  MaybeUnused(cmd_lines);
 }
 
 int main(int argc, char* argv[]) {
-  maybe_unused(argc, argv);
+  MaybeUnused(argc, argv);
   return 0;
 }
